@@ -20,7 +20,7 @@ function complete(){
 
 // Show new Quote
 function newQuote(){
-    loading();
+    // loading();
     // Pick a random quote from apiQuote array
     const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)];
     // console.log(Quotes);
@@ -29,7 +29,7 @@ function newQuote(){
     if(!quote.author){
         authorText.textContent = 'Unknown';
     } else {
-        authorText.TextContent = quote.author;
+        authorText.textContent = quote.author;
     }
     // Check Quote length to determine styling
     if(quote.text.length >50){
@@ -61,7 +61,7 @@ async function getQuotes(params) {
 
 // Tweet A Quote
 function tweetQuote(){
-    const twitterUrl = `https://twitter.com/intent/tweet=${quoteText.textContent} - ${authorText.textContent}`;
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${quoteText.textContent} - ${authorText.textContent}`;
     window.open(twitterUrl, '_blank');
 }
 
@@ -69,4 +69,4 @@ function tweetQuote(){
 newQuoteBtn.addEventListener('click', newQuote);
 twitterBtn.addEventListener('click', tweetQuote);
 // On Load
-getQuotes();
+document.addEventListener('DOMContentLoaded', getQuotes);
